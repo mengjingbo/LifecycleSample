@@ -1,16 +1,15 @@
 ## Android Lifecycle-Aware Components
-
 ### 关于Lifecycle
 
-Lifecycle架构组件是一个生命周期管理组件，它可以将Activity或Fragment的生命周期分离出来，从而在外部实现监听，能够使我们及时释放资源，避免内存泄露和程序崩溃。
+**Lifecycle** 是一个持有(如 **Activity** 或 **Fragment** )生命周期状态信息的类，并且允许其它对象观察这个状态。从而在外部实现监听，能够使我们及时释放资源，避免内存泄露和程序崩溃。
 
 ### 为什么要使用Lifecycle？
 
-Lifecycle能更加友好的帮助我们管理Activity或Fragment的生命周期，下面通过Lifecycle与Presenter管理生命周期的方式进行比较。
+常见的观察生命周期的方式，如MVP中在 **Presenter** 中对 **Activity** 或 **Fragment** 的生命周期进行观察，我们要在 **Presenter** 中定义方法，在 **Activity** 或 **Fragment** 中调用，通过这种方式进行观察，这样代码量大而且也比较繁琐，使用 **Lifecycle** 组件就能简化很多，下面通过 **Lifecycle** 与 **Presenter** 管理生命周期的方式进行比较。
 
 ##### Presenter管理生命周期
 
-常见的MVP架构中Presenter组件处理Activity和Fragment的生命周期，如下：
+在 **Presenter** 中处理 **Activity** 和 **Fragment** 的生命周期，如下：
 
 ```Java
 
@@ -117,9 +116,8 @@ public class ContentActivity extends AppCompatActivity {
     }
 }
 ```
-在Presenter中对在Activity或Fragment的生命周期进行监听时需要种单独对Presenter中的方法进行处理，但使用Lifecycle组件就会简化很多。
 
-##### LifecycleObserver管理生命周期
+##### Lifecycle管理生命周期
 
 需要实现 **LifecycleObserver** 接口，并添加事件注解。
 
@@ -195,4 +193,4 @@ public class MainActivity extends AppCompatActivity {
 }
 ```
 
-[查看案例源代码](https://github.com/mengjingbo/LifecycleSample)
+可以看到代码量少了很多，简化了很多，观察生命周期也比较简单。
